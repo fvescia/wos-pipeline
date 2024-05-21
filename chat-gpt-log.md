@@ -14,3 +14,14 @@ def download_and_unzip(url, extract_to='.'):
     zipfile = ZipFile(BytesIO(http_response.read()))
     zipfile.extractall(path=extract_to)
 ```
+
+***
+
+Does this return an HTTP message?
+
+```
+# For now: Retrieve Schema_2023.zip with urlretrieve
+url = 'https://restricted.lib.uchicago.edu/licensed_data/Clarivate/Web-of-Science-Core_2024-01-16/Schema_2023.zip'
+file = 'xml/Schema_2023.zip'
+urlretrieve(url, file)
+```
