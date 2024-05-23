@@ -62,3 +62,6 @@ with open('xml/Schema_2023.zip', 'wb') as f:
 
 How do I tell what headers my browser has?
 
+***
+
+What are these encoding types? Accept-Encoding: gzip, deflate, br, zstd
