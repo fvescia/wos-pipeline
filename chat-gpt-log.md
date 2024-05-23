@@ -114,3 +114,19 @@ print(r.content)```
 ***
 
 How do I log into this page with a POST request? https://uchicago.okta.com/app/uchicago_canvas_1/exk4c36t2q9kwtQ18697/sso/saml?SAMLRequest=fVLLctowFN33Kzza27KFY8caYIaGyYSZtKWBZNENI%2BRr0GBLjq6Ux99XmDQli2R7dB46Rxqj6Nqez7zb6zt49IAueulajXw4mBBvNTcCFXItOkDuJF%2FNftxylqS8t8YZaVpyJvlaIRDBOmU0iRbzCdmIqtiWWcPikUzzON%2FWTVylbBuXBWNFKS%2BrpixI9AAWg2ZCgkUQInpYaHRCuwClLI%2FTi5iN1ozxPOcX6R8SzUMPpYUbVHvneuSUerlXUuxMYg5OJNJ0VPT9O7qRQj8J3GQUXg65HBWOPVaHZ%2Fc7uyyqkiIaeuxHotm%2FDldGo%2B%2FArsA%2BKQn3d7f%2Fs05myXsk1J62Zqf0m8nybbrvStdK775ebXsiIb9Zr5fx8tdqTabjow8ftrDTY%2Bp5QRXWsV46b2HoeeSyMT2XjE8P%2FzOELeZL0yr5Gl0b2wn3%2BV2yJBsQVcfNQOVeYw9SNQrqMEzbmucrC8LBhIR8IHR6Cv34wabf%2FgI%3D
+
+***
+
+How would I update this code to specify version 3.4 of PySpark?
+
+```
+%%configure -f
+{
+    "conf": {
+        "spark.pyspark.python": "python3",
+        "spark.pyspark.virtualenv.enabled": "true",
+        "spark.pyspark.virtualenv.type":"native",
+        "spark.pyspark.virtualenv.bin.path":"/usr/bin/virtualenv"
+    }
+}
+```
