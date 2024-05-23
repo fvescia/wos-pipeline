@@ -57,3 +57,8 @@ r = requests.get(url, params = param)
 with open('xml/Schema_2023.zip', 'wb') as f:
     f.write(r.content)
 ```
+
+***
+
+How do I tell what headers my browser has?
+
