@@ -25,3 +25,35 @@ url = 'https://restricted.lib.uchicago.edu/licensed_data/Clarivate/Web-of-Scienc
 file = 'xml/Schema_2023.zip'
 urlretrieve(url, file)
 ```
+
+***
+
+What is wrong with this code?
+
+```
+url = 'https://restricted.lib.uchicago.edu/licensed_data/Clarivate/Web-of-Science-Core_2024-01-16/Schema_2023.zip'
+file = 'xml/Schema_2023.zip'
+urlretrieve(url, file)
+```
+
+***
+
+After I run the code you provided, I tried to run:
+
+```
+with ZipFile('xml/Schema_2023.zip', 'r') as f:
+    f.extractall()
+```
+
+And it throws "BadZipFile: File is not a zip file." Why?
+
+***
+
+Why is Schema_2023.zip 51 KB if I download it by clicking on it by only 28 KB if I download it with this code:
+
+```
+param = {'downloadformat': 'zip'}
+r = requests.get(url, params = param)
+with open('xml/Schema_2023.zip', 'wb') as f:
+    f.write(r.content)
+```
