@@ -17,15 +17,15 @@ In short, working locally with a *partial* year of WoS data required clumsy work
 The first step to working with the WoS data is to retrieve it from the UChicago library website. Here, I work with the Annuals, ZIP files of WoS Core Collection data by year. The files are *large*: unzipped, the first of the twenty-five files in `2023_CORE` is 3.28 GB. Ideally, I would scrape them from a cluster, parallelizing the work with [Pyspark](https://medium.com/@siladityaghosh/web-scraping-with-python-parallizing-and-scaling-with-spark-b7d2166602b7). Unfortunately, the files are restricted, and scraping with authentication is beyond the scope of this project. (Throughout my code, `#TODOs` note potential extensions of this work, such as using GET and POST requests to programmatically log into the library website to scrape the restricted files.) For now, I download the `2023_CORE` ZIP file manually to my local system, then programmatically unzip it and write a portion of its contents to an AWS S3 bucket.
 
 ## Step 1: Write WoS XML to S3 
-File: [xml-to-s3.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-s3.ipynb) | System: Local
+[xml-to-s3.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-s3.ipynb) | System: Local
 
 Unzipped, `2023_CORE` contains twenty-five zipped XML files. Writing the first of these files, unzipped, to S3 from my local system took twenty minutes, so I work with a portion of the 2023 data, writing three of the unzipped files to S3 to demonstrate how a for loop can be used to automatically process multiple files. The loop unzips the first file, writes it to S3, and deletes it, then repeats the process with the second and third files; I had to delete each file before unzipping the next to avoid running out of space on my system.
 
 ## Step 2: Convert WoS  XML to Parquet
-File: [xml-to-parquet.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-parquet.ipynb) | System: EMR Cluster | Kernel: Python
+[xml-to-parquet.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-parquet.ipynb) | System: EMR Cluster | Kernel: Python
 
 ## Step 3: Analyze
-File: [parse-parquet.ipynb]() | System: EMR Cluster | Kernel: PySpark
+[parse-parquet.ipynb]() | System: EMR Cluster | Kernel: PySpark
 
 ## Future Directions
 
