@@ -235,3 +235,93 @@ What does this code do?
 with ThreadPoolExecutor(max_workers = 3) as executor:
     results = executor.map(invoke_function, [test_data for _ in range(4)])
 ```
+
+***
+
+If this is my dictionary:
+
+par_files = {
+    'PurchaseOrder.xml.parquet': 'df1',
+    'p2.parquet': 'df2',
+    'p3.parquet': 'df3'
+}
+
+Why does this code
+
+```
+for name, file in enumerate(par_files):
+    print(name, file)
+```
+
+return
+
+```
+0 PurchaseOrder.xml.parquet
+1 p2.parquet
+2 p3.parquet
+```
+
+Instead of
+
+```
+PurchaseOrder.xml.parquet df1
+p2.parquet df2
+p3.parquet df3
+```
+
+***
+
+What is df1 still undefined after I run this code?
+
+```
+par_files = [
+    ('s3://wos-bucket/PurchaseOrder.xml.parquet', 'df1'),
+    ('s3://wos-bucket/p2.parquet', 'df2'),
+    ('s3://wos-bucket/p3.parquet', 'df3')
+]
+
+# Define read function
+def from_s3(tup):
+    file, name = tup
+    name = spark.read.parquet(file)
+    
+# Read test Parquet files from S3 in parallel
+with ThreadPoolExecutor(max_workers = 3) as executor:
+    results = executor.map(from_s3, par_files)
+```
+
+***
+
+How do I modify this code to print results by ascending count?
+
+```
+age.groupby('bracket') \
+    .count() \
+    .show()
+```
+
+***
+
+What is wrong with this SELECT statement?
+
+```
+names_lst = friends. \
+    withColumn(
+        'names', 
+        f.expr('''
+            SELECT DISTINCT explode('friends.name')
+            '''))
+```
+
+***
+
+Why doesn't this code do the same thing?
+
+```
+names_lst = friends. \
+    withColumn(
+        'names', 
+        f.expr('''
+            SELECT DISTINCT f.explode('friends.name')
+            '''))
+```
