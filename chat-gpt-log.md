@@ -200,3 +200,38 @@ Please explain this code to me:
 file_rdd = spark.read.text('s3://wos-bucket/WR_2023_20240112181857_CORE_0001.xml', wholetext = True).rdd
 records_rdd = file_rdd.flatMap(parse_xml)
 ```
+
+***
+
+Why does `!python xml_to_parquet.py -x schema.xsd WR_2023_20240112181857_CORE_0001.xml` throw this error:
+
+```
+File "xml_to_parquet.py", line 1
+    ./xml_to_parquet.py
+    ^
+SyntaxError: invalid syntax
+```
+
+***
+
+What does this error mean?
+
+```
+File "<ipython-input-15-2d05c6c7a03b>", line 1
+    python xml_to_parquet.py -x schema.xsd WR_2023_20240112181857_CORE_0001.xml
+                        ^
+SyntaxError: invalid syntax
+```
+
+***
+
+How can I write a .py file to S3 with `.put_object()`?
+
+***
+
+What does this code do?
+
+```
+with ThreadPoolExecutor(max_workers = 3) as executor:
+    results = executor.map(invoke_function, [test_data for _ in range(4)])
+```
