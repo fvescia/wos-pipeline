@@ -21,5 +21,6 @@ The first step to working with the WoS data is to retrieve it from the UChicago 
 Unzipped, `2023_CORE` contains twenty-five zipped XML files. Writing the first of these files, unzipped, to S3 from my local system took twenty minutes, so I work with a portion of the 2023 data, writing three of the unzipped files to S3 to demonstrate how a for loop can be used to automatically process multiple files. The loop unzips the first file, writes it to S3, and deletes it, then repeats the process with the second and third files; I had to delete each file before unzipping the next to avoid running out of space on my system.
 
 
-
+**Reference**  
+OpenAI. (2023). ChatGPT (Feb 13 version) [Large language model]. https://chat.openai.com/chat.
 
