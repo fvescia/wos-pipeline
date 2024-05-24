@@ -130,3 +130,44 @@ How would I update this code to specify version 3.4 of PySpark?
     }
 }
 ```
+
+***
+
+How do I display my files in a 3.0.1-amzn-0 Cpark context?
+
+***
+
+What is the equivalent of "ls" in a 3.0.1-amzn-0 Cpark context?
+
+***
+
+How do I make obj a ZIP file? `obj = s3r.Object('wos-bucket', 'xml/2023_CORE/WR_2023_20240112181857_CORE_0001.xml.gz')`
+
+***
+
+How do I read 'xml/2023_CORE/WR_2023_20240112181857_CORE_0001.xml.gz' from S3 into a Spark context?
+
+***
+
+Does this code unzip the .gz file before writing it to an RDD?
+
+```
+path = 'xml/2023_CORE/WR_2023_20240112181857_CORE_0001.xml.gz'
+rdd = spark.sparkContext.textFile(path)
+```
+
+***
+
+Please explain this regex to me: `regex = re.compile('(.*zip$)|(.*rar$)|(.*r01$)')`
+
+***
+
+Please explain this code to me:
+
+```
+for filename in os.listdir('.'):
+  if filename.endswith('.gz'): 
+     with gzip.open(filename, 'rb') as f_in:
+       with open(filename[:-3], 'wb') as f_out:
+         shutil.copyfileobj(f_in, f_out)
+```
