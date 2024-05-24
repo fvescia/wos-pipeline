@@ -16,7 +16,7 @@ In short, working locally with a *partial* year of WoS data required clumsy work
 
 The first step to working with the WoS data is to retrieve it from the UChicago library website. Here, I work with the Annuals, ZIP files of WoS Core Collection data by year. The files are *large*: unzipped, the first of the twenty-five files in `2023_CORE` is 3.28 GB. Ideally, I would scrape them from a cluster, parallelizing the work with [Pyspark](https://medium.com/@siladityaghosh/web-scraping-with-python-parallizing-and-scaling-with-spark-b7d2166602b7). Unfortunately, the files are restricted, and scraping with authentication is beyond the scope of this project. (Throughout my code, `#TODOs` note potential extensions of this work, such as using GET and POST requests to programmatically log into the library website to scrape the restricted files.) For now, I download the `2023_CORE` ZIP file manually, then programmatically unzip it and write a portion of its contents to an AWS S3 bucket.
 
-## Step 1: Write WoS XML to S3
+## Step 1: Write WoS XML to S3 [xml-to-s3.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-s3.ipynb)
 
 Unzipped, `2023_CORE` contains twenty-five zipped XML files. Writing the first of these files, unzipped, to S3 from my local system took twenty minutes, so I work with a portion of the 2023 data, writing three of the unzipped files to S3 to demonstrate how a for loop can be used to automatically process multiple files. The loop unzips the first file, writes it to S3, and deletes it, then repeats the process with the second and third files; I had to delete each file before unzipping the next to avoid running out of space on my system.
 
@@ -28,6 +28,6 @@ Unzipped, `2023_CORE` contains twenty-five zipped XML files. Writing the first o
 
 As I note above, an optimized workflow would scrape ZIP files from the University of Chicago Library website programmatically. Future work could explore the possibility of using GET and POST requests to navigate the library’s authentication process. Once the workflow is optimized, it would be valuable to calculate the time, effort, and cost of analyzing WoS data on EMR clusters, so researchers can determine whether this approach or purchasing WoS API access is a better use of their resources.
 
-**Reference**  
+**LLM Reference**  
 OpenAI. (2023). ChatGPT (Feb 13 version) [Large language model]. https://chat.openai.com/chat.
 
