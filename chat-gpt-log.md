@@ -171,3 +171,32 @@ for filename in os.listdir('.'):
        with open(filename[:-3], 'wb') as f_out:
          shutil.copyfileobj(f_in, f_out)
 ```
+
+***
+
+Is spark-xml still available from Databricks?
+
+***
+
+How can I install spark-xml in a Spark context?
+
+***
+
+How can I install spark-xml in a Spark context in JupyterHub?
+
+***
+
+Can is sc.install spark-xml?
+
+***
+
+What does `option()` do in this code? `spark.read.format("xml").option("rowTag","book").load("/data/spark/books.xml").show()`
+
+***
+
+Please explain this code to me:
+
+```
+file_rdd = spark.read.text('s3://wos-bucket/WR_2023_20240112181857_CORE_0001.xml', wholetext = True).rdd
+records_rdd = file_rdd.flatMap(parse_xml)
+```
