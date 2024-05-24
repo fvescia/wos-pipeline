@@ -24,12 +24,16 @@ Unzipped, `2023_CORE` contains twenty-five zipped XML files. Writing the first o
 ## Step 2: Convert WoS  XML to Parquet
 [xml-to-parquet.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/xml-to-parquet.ipynb) | System: EMR Cluster | Kernel: Python
 
+Parquet is a column-based data format that is more space-efficient and faster to query than row-based XML. Ideally, this workflow would use BlackRock’s open source [XML-to-Parquet converter](https://github.com/blackrock/xml_to_parquet) to convert the WoS XML to Parquet. Unfortunately, while I was able to run the module’s [test job]( https://github.com/blackrock/xml_to_parquet/tree/master/test) on an EMR cluster, I could not get it to work with the WoS XML. I believe the issue is with schema specification; the test job references a single `xsd` file, while the WoS XML is defined by a hierarchy of schemas (per p. 6-7 of the [WoS XML user guide]( https://guides.lib.uchicago.edu/ld.php?content_id=75223913)), which the converter may not understand how to work with. If the WoS XML could be successfully converted, the resulting Parquet files could be written back to S3 in parallel using the `concurrent.futures` module. I demonstrate this is possible by making several copies of the test Parquet file and writing them to S3 in parallel.
+
 ## Step 3: Analyze
-[parse-parquet.ipynb]() | System: EMR Cluster | Kernel: PySpark
+[parse-parquet.ipynb](https://github.com/fvescia/wos-pipeline/blob/main/parse-parquet.ipynb) | System: EMR Cluster | Kernel: PySpark
+
+Concurrent.futures also works to read Parquet files from S3 into a Spark session in parallel.  The files can be merged into a single dataframe, which can then be analyzed with pyspark.sql. Since I could not convert the WoS XML to Parquet, I demonstrate parallel reading with files from the XML-to-Parquet converter test job and analyzing nested Parquet data with open-source, auto-generated [JSON data](https://jsoneditoronline.org/indepth/datasets/json-file-example/) read into my Spark session as a Parquet file. For example, I show how to identify distinct names within a nested Parquet file, which would be very useful for citation analysis.
 
 ## Future Directions
 
-As I note above, an optimized workflow would scrape ZIP files from the University of Chicago Library website programmatically. Future work could explore the possibility of using GET and POST requests to navigate the library’s authentication process. Once the workflow is optimized, it would be valuable to calculate the time, effort, and cost of analyzing WoS data on EMR clusters, so researchers can determine whether this approach or purchasing WoS API access is a better use of their resources.
+As I note above, the ideal version of this  workflow would scrape ZIP files from the University of Chicago Library website programmatically and successfully run the WoS XML through a XML-to-Parquet converter. Future work could explore the possibility of using GET and POST requests to navigate the library’s authentication process and determine whether the converter can work with multi-file, hierarchical schemas. Once the workflow is optimized, it would be valuable to calculate the time, effort, and cost of analyzing WoS data on EMR clusters, so researchers can determine whether this approach or purchasing WoS API access is a better use of their resources.
 
 **LLM Reference**  
 OpenAI. (2023). ChatGPT (Feb 13 version) [Large language model]. https://chat.openai.com/chat.
