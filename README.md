@@ -1,8 +1,8 @@
 ## Context
 
-I created this proto pipeline in [MACS 30113 Big Data and High Performance Computing](https://github.com/macs30113-s24/course-materials) at the University of Chicago. Throughout the code, `#TODOs` note how it could be developed into a fully functioning pipeline. 
+I began this pipeline in [MACS 30113 Big Data and High Performance Computing](https://github.com/macs30113-s24/course-materials) at the University of Chicago. Since then, the UChicago library has made Web of Science data available in [TDM Studio](https://guides.lib.uchicago.edu/tdmstudio), a cloud-based tool for text mining and analysis. This negates the need for a custom solution, but `#TODOs` throughout my code note how I would have approached developing this into a fully functional pipeline.
 
-This sample demonstrates my programming style and approach to structuring technical projects.
+This sample demonstrates my programming style and how I structure technical projects. 
 
 ## Citation Analysis and the Web of Science
 
