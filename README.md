@@ -1,3 +1,7 @@
+## Context
+
+I created this proto pipeline in [MACS 30113 Big Data and High Performance Computing](https://github.com/macs30113-s24/course-materials) at the University of Chicago. Throughout the code, `#TODOs` note how it could be developed into a fully functioning pipeline. This sample demonstrates my programming style and approach to structuring technical projects.
+
 ## Citation Analysis and the Web of Science
 
 Citation analysis is a well-established form of social science inquiry used to explore knowledge creation and dissemination. For example, [McMahan and McFarland (2021)](https://journals.sagepub.com/doi/full/10.1177/0003122421996323#fn6-0003122421996323), the inspiration for this work, show that publications cited in formal reviews typically experience a dramatic loss in future citations, since future works tend to cite the reviews rather than the publications featured in them. They argue the reviews, which receive disproportionate attention, “perform curatorial work that substantially transforms the research communities they aim to summarize.”
