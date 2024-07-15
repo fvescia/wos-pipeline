@@ -1,6 +1,8 @@
 ## Context
 
-I created this proto pipeline in [MACS 30113 Big Data and High Performance Computing](https://github.com/macs30113-s24/course-materials) at the University of Chicago. Throughout the code, `#TODOs` note how it could be developed into a fully functioning pipeline. This sample demonstrates my programming style and approach to structuring technical projects.
+I created this proto pipeline in [MACS 30113 Big Data and High Performance Computing](https://github.com/macs30113-s24/course-materials) at the University of Chicago. Throughout the code, `#TODOs` note how it could be developed into a fully functioning pipeline. 
+
+This sample demonstrates my programming style and approach to structuring technical projects.
 
 ## Citation Analysis and the Web of Science
 
